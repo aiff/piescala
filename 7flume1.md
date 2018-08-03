@@ -2,7 +2,52 @@
 # 什么是flume   
 ## flume是apache的顶项目  看地址便知
 http://flume.apache.org/
+<ol>
+  ......
+  </ol>
+##  install  flume
 
+[hadoop@hadoop soft]# wget http://archive.cloudera.com/cdh5/cdh/5/flume-ng-1.6.0-cdh5.7.0.tar.gz
+[hadoop@hadoop soft]# tar -zxvf flume-ng-1.6.0-cdh5.7.0.tar.gz
+[hadoop@hadoop soft]# mv flume-ng-1.6.0-cdh5.7.0.tar.gz flume
+[hadoop@hadoop soft]# mv flume/ ../app
+[hadoop@hadoop soft]# chmod 755 -R  ../app/flume
+[hadoop@hadoop soft]# vi ~/.bash_profile
+export FLUME_HOME=/hadoop/app/flume
+export PATH=$PATH:$FLUME_HOME/bin
+[hadoop@hadoop soft]# source ~/.bash_profile
+
+
+[hadoop@hadoop ~]$ mkdir -p /home/hadoop/script/flume
+
+[hadoop@hadoop flume]$ pwd
+/home/hadoop/script/flume
+[hadoop@hadoop flume]$ vi logger.conf
+
+
+#定义 sources,sinks,channels的名称
+a1.sources = s1
+a1.sinks = k1
+a1.channels = c1
+#定义 sources 的属性
+a1.sources.s1.type = netcat
+a1.sources.s1.bind = 0.0.0.0
+a1.sources.s1.port = 44444
+#定义 sinks 的属性
+a1.sinks.k1.type = logger
+#定义 channels 的属性
+a1.channels.c1.type = memory
+#对 channel 的绑定
+a1.sources.s1.channels = c1
+a1.sinks.k1.channel = c1
+#开启服务
+[hadoop@hadoop flume]$ flume-ng agent --name a1 --conf $FLUME_HOME/conf \
+--conf-file /home/hadoop/script/flume/logger.conf \
+-Dflume.root.logger=INFO,console \
+-Dflume.monitorint.type=http \
+-Dflume.monitoring.port=34343
+#telnet sources定义的端口,输入信息后在开启服务的窗口有内容返回即是成功
+[hadoop@hadoop flume]$ telnet localhost 44444
 
 
 
