@@ -50,6 +50,21 @@ a1.sinks.k1.channel = c1
 [hadoop@hadoop flume]$ telnet localhost 44444
 
 
+	
+需求：采集指定文件的内容到HDFS
+技术选型：exec - memory - hdfs
+
+./flume-ng agent \
+--name a1 \
+--conf $FLUME_HOME/conf \
+--conf-file /home/hadoop/script/flume/exec-memory-hdfs.conf \
+-Dflume.root.logger=INFO,console \
+-Dflume.monitoring.type=http \
+-Dflume.monitoring.port=34343
+
+
+
+
 
 
 ##  hue 安装 很难 慢慢看 
