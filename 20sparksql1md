@@ -14,7 +14,7 @@ Welcome to
    /___/ .__/\_,_/_/ /_/\_\   version 2.2.1
       /_/
       
-      ``````
+``````
       
 
 scala> spark.sql("select * from demo1").show
@@ -26,7 +26,7 @@ java.io.IOException: Error accessing file:/user/hive/warehouse/demo1
   at org.apa
       
       
-      `````
+`````
       # 处理 
       [root@hadoop ~]# cd /user/hive/warehouse
 [root@hadoop warehouse]# ll
