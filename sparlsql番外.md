@@ -1,7 +1,7 @@
 # 报错    .sql("show  tables").show
 
 /home/hadoop/apache-hive-1.1.0-cdh5.7.0-bin/lib/mysql-connector-java.jar
-
+驱动文件没指定好地方。。。。
 ```
 spark.sql("show tables").show(false)
 18/12/04 14:12:20 ERROR ObjectStore: Version information found in metastore 
