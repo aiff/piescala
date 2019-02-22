@@ -38,7 +38,7 @@
 
     </plugins>
   </build>
-````````
+ 
 ##  错误
 ````
 Exception in thread "main" org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 0.0 failed 1 times, most recent failure: Lost task 0.0 in stage 0.0 (TID 0, localhost, executor driver): java.lang.ArrayIndexOutOfBoundsException: 1 at com.ruoze.pipe.pie$$anonfun$main$1.apply(pie.scala:26)
